@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ratul Das — Developer & Data Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #12192B;
+      --bg: #F5F7FC;
+      --card: #FFFFFF;
+      --accent: #4F46E5;
+      --accent-light: #EEF2FF;
+      --accent-dark: #3730A3;
+      --muted: #5C6B82;
+      --border: #E4E9F2;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(245, 247, 252, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-weight: 800; font-size: 1.1rem; color: var(--ink); text-decoration: none; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 1.5rem; align-items: center; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta {
+      background: var(--accent); color: #fff;
+      padding: 0.5rem 1.3rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.875rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--ink);
+      padding: clamp(5rem, 10vw, 7rem) clamp(1.5rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr 460px;
+      gap: 3rem; align-items: center;
+      min-height: 82vh;
+    }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-visual { display: none; }
+      .nav-links { display: none; }
+    }
+
+    .badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(79, 70, 229, 0.18);
+      border: 1px solid rgba(79, 70, 229, 0.32);
+      color: #A5B4FC;
+      padding: 0.35rem 0.9rem; border-radius: 100px;
+      font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 800; line-height: 1.08;
+      letter-spacing: -0.03em; color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title em { font-style: normal; color: #818CF8; }
+
+    .hero-desc {
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 1.05rem; max-width: 520px; margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      padding: 0.85rem 2rem; border-radius: 10px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark); transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.42);
+    }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      color: #fff; padding: 0.85rem 2rem; border-radius: 10px;
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.14); }
+
+    /* Hero visual */
+    .hero-visual {
+      background: #0E1525;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px; overflow: hidden;
+    }
+    .mock-bar {
+      background: #111827; padding: 0.75rem 1rem;
+      display: flex; align-items: center; gap: 0.45rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-r { background: #FF5F57; }
+    .dot-y { background: #FEBC2E; }
+    .dot-g { background: #28C840; }
+    .mock-filename { color: rgba(255,255,255,0.3); font-size: 0.7rem; margin-left: 6px; font-weight: 500; }
+
+    .sheet { width: 100%; border-collapse: collapse; font-size: 0.72rem; }
+    .sheet thead tr { background: #1A2540; }
+    .sheet th {
+      padding: 0.5rem 0.8rem; text-align: left;
+      color: rgba(255,255,255,0.28); font-weight: 600;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .sheet td {
+      padding: 0.46rem 0.8rem;
+      border-right: 1px solid rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-family: 'Courier New', monospace;
+    }
+    .sheet tbody tr:nth-child(even) td { background: rgba(255,255,255,0.017); }
+    .c-num  { color: #7DD3FC; }
+    .c-name { color: #86EFAC; }
+    .c-mail { color: #FCA5A5; }
+    .c-stat { color: #FCD34D; }
+
+    .cursor {
+      display: inline-block; width: 1.5px; height: 0.85em;
+      background: #A5B4FC; vertical-align: middle;
+      animation: blink 0.85s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ── STATS ── */
+    .stats { background: #1B2338; padding: 2.5rem clamp(1.5rem, 5vw, 4rem); }
+    .stats-row {
+      max-width: 960px; margin: 0 auto;
+      display: flex; justify-content: space-around; gap: 2rem; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-val {
+      font-size: 2.5rem; font-weight: 800; color: #fff;
+      letter-spacing: -0.03em; line-height: 1;
+    }
+    .stat-val span { color: #818CF8; }
+    .stat-label {
+      color: rgba(255,255,255,0.38); font-size: 0.73rem;
+      text-transform: uppercase; letter-spacing: 0.09em; margin-top: 0.35rem;
+    }
+
+    /* ── SECTION SHELL ── */
+    .section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .eyebrow {
+      display: block; color: var(--accent);
+      font-size: 0.77rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.55rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800; letter-spacing: -0.025em; margin-bottom: 0.55rem;
+    }
+    .section-sub { color: var(--muted); max-width: 520px; margin-bottom: 2.75rem; }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .project-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(79, 70, 229, 0.12);
+      transform: translateY(-4px);
+    }
+    .project-tag {
+      align-self: flex-start; background: var(--accent-light); color: var(--accent);
+      font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.65rem; border-radius: 6px;
+      margin-bottom: 1rem; text-transform: uppercase;
+    }
+    .project-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .project-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem; }
+    .project-tech { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .tech-pill {
+      background: #F1F5F9; color: #475569; font-size: 0.72rem; font-weight: 600;
+      padding: 0.2rem 0.55rem; border-radius: 4px;
+    }
+    .project-links { display: flex; gap: 0.8rem; }
+    .btn-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      padding: 0.5rem 1rem; border-radius: 8px; font-weight: 700; font-size: 0.82rem;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .btn-link-primary { background: var(--accent); color: #fff; }
+    .btn-link-primary:hover { background: var(--accent-dark); }
+    .btn-link-outline { border: 1px solid var(--border); color: var(--ink); }
+    .btn-link-outline:hover { background: #F8FAFC; border-color: #CBD5E1; }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .svc-card {
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 1.75rem;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+    }
+    .svc-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 8px 28px rgba(79, 70, 229, 0.1);
+      transform: translateY(-3px);
+    }
+    .svc-icon { font-size: 1.7rem; margin-bottom: 0.85rem; display: block; }
+    .svc-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.45rem; }
+    .svc-desc { color: var(--muted); font-size: 0.865rem; line-height: 1.6; margin-bottom: 1rem; }
+    .svc-price { color: var(--accent); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.03em; }
+
+    /* ── SKILLS ── */
+    .skills-wrap {
+      background: var(--ink);
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+    .skills-inner { max-width: 1100px; margin: 0 auto; }
+    .skills-inner .eyebrow { color: #818CF8; }
+    .skills-inner .section-title { color: #fff; }
+    .skills-inner .section-sub { color: rgba(255,255,255,0.42); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.85rem;
+    }
+    .skill-pill {
+      background: rgba(79, 70, 229, 0.1);
+      border: 1px solid rgba(79, 70, 229, 0.2);
+      border-radius: 12px; padding: 1rem 0.75rem;
+      text-align: center; color: rgba(255,255,255,0.82);
+      font-size: 0.8rem; font-weight: 500;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .skill-pill:hover { background: rgba(79, 70, 229, 0.22); border-color: #818CF8; }
+    .sk-icon { font-size: 1.4rem; display: block; margin-bottom: 0.4rem; }
+
+    /* ── CERT + WHY ── */
+    .split-section {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+    @media (max-width: 780px) { .split-section { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    .cert-card {
+      background: linear-gradient(140deg, #1B2538 0%, #12192B 100%);
+      border: 1px solid rgba(129, 140, 248, 0.18);
+      border-radius: 20px; padding: 3rem 2rem; text-align: center;
+    }
+    .cert-medal { font-size: 4rem; display: block; margin-bottom: 1.5rem; }
+    .cert-title { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+    .cert-org { color: rgba(255,255,255,0.4); font-size: 0.84rem; margin-bottom: 1.75rem; }
+    .cert-stamp {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(5, 150, 105, 0.15);
+      border: 1px solid rgba(5, 150, 105, 0.28);
+      color: #6EE7B7; padding: 0.45rem 1.1rem; border-radius: 100px;
+      font-size: 0.77rem; font-weight: 600;
+    }
+
+    .why-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .why-item { display: flex; gap: 1rem; align-items: flex-start; }
+    .why-ico {
+      width: 42px; height: 42px; background: var(--accent-light);
+      border-radius: 10px; display: flex; align-items: center;
+      justify-content: center; font-size: 1.2rem; flex-shrink: 0;
+    }
+    .why-text h4 { font-weight: 700; font-size: 1rem; margin-bottom: 0.2rem; }
+    .why-text p { color: var(--muted); font-size: 0.875rem; }
+
+    /* ── CTA ── */
+    .cta {
+      background: linear-gradient(135deg, var(--accent) 0%, #7C3AED 100%);
+      padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 4rem);
+      text-align: center;
+    }
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800;
+      color: #fff; letter-spacing: -0.025em; margin-bottom: 0.9rem;
+    }
+    .cta p { color: rgba(255,255,255,0.72); max-width: 460px; margin: 0 auto 2.5rem; }
+    .btn-white {
+      background: #fff; color: var(--accent);
+      padding: 1rem 2.5rem; border-radius: 10px;
+      font-weight: 700; font-size: 1rem; text-decoration: none;
+      display: inline-block; transition: box-shadow 0.2s, transform 0.15s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      padding: 1.75rem clamp(1.5rem, 5vw, 4rem);
+      text-align: center; color: rgba(255,255,255,0.28); font-size: 0.82rem;
+    }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.vis { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+  <a href="#" class="nav-brand">Ratul<span> Das</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Featured Projects</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#skills">Skills</a></li>
+  </ul>
+  <a href="https://www.fiverr.com/ratul_shelby/buying?source=avatar_menu_profile" class="nav-cta" target="_blank" rel="noopener">Hire me on Fiverr →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="badge">🚀 Web Developer & Certified Data Specialist</div>
+    <h1 class="hero-title">
+      Engineering Apps &<br>
+      <em>Clean Data Solutions.</em>
+    </h1>
+    <p class="hero-desc">
+      Software developer building dynamic web applications (PHP, MySQL, Web APIs) and certified data entry specialist delivering 99%+ accurate data processing.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Featured Projects →</a>
+      <a href="https://github.com/Ratul-007" class="btn-ghost" target="_blank" rel="noopener">GitHub Profile</a>
+    </div>
+  </div>
+
+  <!-- Live spreadsheet visual -->
+  <div class="hero-visual">
+    <div class="mock-bar">
+      <div class="dot dot-r"></div>
+      <div class="dot dot-y"></div>
+      <div class="dot dot-g"></div>
+      <span class="mock-filename">client_database.xlsx</span>
+    </div>
+    <table class="sheet">
+      <thead>
+        <tr>
+          <th>#</th><th>Name</th><th>Email</th><th>Amount</th><th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="c-num">001</td><td class="c-name">Ahmed R.</td>
+          <td class="c-mail">ahmed@company.co</td><td class="c-num">$4,500</td><td class="c-stat">Active</td>
+        </tr>
+        <tr>
+          <td class="c-num">002</td><td class="c-name">Sarah K.</td>
+          <td class="c-mail">s.kim@startup.io</td><td class="c-num">$2,300</td><td class="c-stat">Active</td>
+        </tr>
+        <tr>
+          <td class="c-num">003</td><td class="c-name">John M.</td>
+          <td class="c-mail">jm@finance.net</td><td class="c-num">$7,800</td><td class="c-stat">Pending</td>
+        </tr>
+        <tr>
+          <td class="c-num">004</td><td class="c-name">Liu W.</td>
+          <td class="c-mail">liu@global.hk</td><td class="c-num">$1,200</td><td class="c-stat">Active</td>
+        </tr>
+        <tr>
+          <td class="c-num">005</td>
+          <td class="c-name" id="ln"><span class="cursor"></span></td>
+          <td class="c-mail" id="le"></td>
+          <td class="c-num"  id="la"></td>
+          <td class="c-stat" id="ls"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-val">99<span>%</span></div>
+      <div class="stat-label">Accuracy rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">100<span>%</span></div>
+      <div class="stat-label">On-time delivery</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">24<span>h</span></div>
+      <div class="stat-label">Average turnaround</div>
+    </div>
+    <div class="stat">
+      <div class="stat-val">5<span>★</span></div>
+      <div class="stat-label">Client rating</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED PROJECTS -->
+<div id="projects" class="section">
+  <span class="eyebrow">My Work</span>
+  <h2 class="section-title">Featured Web Projects</h2>
+  <p class="section-sub">Explore full-stack web applications and software engineering projects with live demos and code repositories.</p>
+
+  <div class="projects-grid">
+    <!-- Project 1: GroceryGenius -->
+    <div class="project-card reveal">
+      <div>
+        <span class="project-tag">Full-Stack App</span>
+        <h3 class="project-title">GroceryGenius 🛒</h3>
+        <p class="project-desc">A smart grocery management and meal planning web application designed for everyday households. Includes live budget tracking, pantry expiry alerts, and cook mode with auto-ingredient deduction.</p>
+        <div class="project-tech">
+          <span class="tech-pill">PHP 8</span>
+          <span class="tech-pill">MySQL</span>
+          <span class="tech-pill">Web Audio API</span>
+          <span class="tech-pill">HTML5/CSS3</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="http://grocerygenius.infinityfree.io" target="_blank" rel="noopener" class="btn-link btn-link-primary">Live Demo 🔗</a>
+        <a href="https://github.com/Ratul-007/GroceryGenius" target="_blank" rel="noopener" class="btn-link btn-link-outline">GitHub Repo 📦</a>
+      </div>
+    </div>
+
+    <!-- Project 2: AstroBase Simulator -->
+    <div class="project-card reveal">
+      <div>
+        <span class="project-tag">Simulation</span>
+        <h3 class="project-title">AstroBase Moon & Mars Simulator</h3>
+        <p class="project-desc">Interactive space colony simulation managing resource allocation, life support systems, and survival strategies for off-world bases.</p>
+        <div class="project-tech">
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">HTML5</span>
+          <span class="tech-pill">CSS3</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ratul-007/AstroBase-Moon-Mars-Survival-Simulator" target="_blank" rel="noopener" class="btn-link btn-link-outline">GitHub Repo 📦</a>
+      </div>
+    </div>
+
+    <!-- Project 3: CNN Image Classifier -->
+    <div class="project-card reveal">
+      <div>
+        <span class="project-tag">Machine Learning</span>
+        <h3 class="project-title">CNN Image Classifier</h3>
+        <p class="project-desc">Convolutional Neural Network model built for image classification tasks, demonstrating deep learning data pipelines and model training.</p>
+        <div class="project-tech">
+          <span class="tech-pill">Python</span>
+          <span class="tech-pill">TensorFlow/Keras</span>
+          <span class="tech-pill">OpenCV</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ratul-007/CNN-Image-Classifier" target="_blank" rel="noopener" class="btn-link btn-link-outline">GitHub Repo 📦</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div id="services" class="section">
+  <span class="eyebrow">Data Entry Solutions</span>
+  <h2 class="section-title">Data Services Offered</h2>
+  <p class="section-sub">Fast, accurate, and professional data processing across various formats and CRMs.</p>
+
+  <div class="services-grid">
+    <div class="svc-card reveal">
+      <span class="svc-icon">📊</span>
+      <h3 class="svc-name">Excel & Google Sheets entry</h3>
+      <p class="svc-desc">Accurate data entry, formatting, and organizing into spreadsheets of any size — neatly and consistently.</p>
+      <span class="svc-price">FROM $5</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">📄</span>
+      <h3 class="svc-name">PDF to Excel or Word</h3>
+      <p class="svc-desc">Convert any PDF — scanned or digital — into a fully editable Excel or Word file with perfect accuracy.</p>
+      <span class="svc-price">FROM $5</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🌐</span>
+      <h3 class="svc-name">Web research & data collection</h3>
+      <p class="svc-desc">Collect, organize, and deliver targeted data from websites into clean, structured spreadsheets.</p>
+      <span class="svc-price">FROM $10</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🗂️</span>
+      <h3 class="svc-name">CRM data entry</h3>
+      <p class="svc-desc">Enter, update, and clean records in Salesforce, HubSpot, Zoho, and any other CRM system.</p>
+      <span class="svc-price">FROM $15</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">✍️</span>
+      <h3 class="svc-name">Copy typing</h3>
+      <p class="svc-desc">Type handwritten, scanned, or image-based documents into clean, formatted digital files.</p>
+      <span class="svc-price">FROM $5</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-icon">🧹</span>
+      <h3 class="svc-name">Data cleaning</h3>
+      <p class="svc-desc">Remove duplicates, fix inconsistencies, and standardize data across even the largest datasets.</p>
+      <span class="svc-price">FROM $10</span>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills" class="skills-wrap">
+  <div class="skills-inner">
+    <span class="eyebrow">My Toolkit</span>
+    <h2 class="section-title">Skills & Technologies</h2>
+    <p class="section-sub">Programming languages, web frameworks, databases, and data processing tools I use daily.</p>
+    <div class="skills-grid">
+      <div class="skill-pill"><span class="sk-icon">🐘</span>PHP 8</div>
+      <div class="skill-pill"><span class="sk-icon">🗄️</span>MySQL</div>
+      <div class="skill-pill"><span class="sk-icon">🌐</span>HTML5 & CSS3</div>
+      <div class="skill-pill"><span class="sk-icon">⚡</span>JavaScript</div>
+      <div class="skill-pill"><span class="sk-icon">📊</span>Microsoft Excel</div>
+      <div class="skill-pill"><span class="sk-icon">📋</span>Google Sheets</div>
+      <div class="skill-pill"><span class="sk-icon">💼</span>Salesforce</div>
+      <div class="skill-pill"><span class="sk-icon">🎯</span>HubSpot</div>
+      <div class="skill-pill"><span class="sk-icon">🔍</span>Web Research</div>
+      <div class="skill-pill"><span class="sk-icon">📦</span>Git & GitHub</div>
+      <div class="skill-pill"><span class="sk-icon">🔄</span>Data Cleaning</div>
+      <div class="skill-pill"><span class="sk-icon">⚡</span>Fast Typing</div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATE + WHY ME -->
+<div class="split-section">
+  <div class="cert-card reveal">
+    <span class="cert-medal">🏅</span>
+    <h3 class="cert-title">Professional Data Entry Certification</h3>
+    <p class="cert-org">Issued 29 January 2024 · Advanced level</p>
+    <div style="display:flex; flex-direction:column; gap:0.5rem; margin-bottom:1.75rem;">
+      <div style="display:flex; justify-content:space-between; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <span style="color:rgba(255,255,255,0.38); font-size:0.78rem;">Total lessons</span>
+        <span style="color:#A5B4FC; font-size:0.78rem; font-weight:600;">19 lessons</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);">
+        <span style="color:rgba(255,255,255,0.38); font-size:0.78rem;">Total duration</span>
+        <span style="color:#A5B4FC; font-size:0.78rem; font-weight:600;">12+ hours</span>
+      </div>
+      <div style="display:flex; justify-content:space-between; padding: 0.4rem 0;">
+        <span style="color:rgba(255,255,255,0.38); font-size:0.78rem;">Instructor</span>
+        <span style="color:#A5B4FC; font-size:0.78rem; font-weight:600;">Md. Shahjalal</span>
+      </div>
+    </div>
+    <div class="cert-stamp">✓ Verified &amp; certified</div>
+  </div>
+
+  <div>
+    <span class="eyebrow">Why Choose Me</span>
+    <h2 class="section-title" style="margin-bottom: 2rem;">Quality & Precision Guaranteed</h2>
+    <div class="why-list">
+      <div class="why-item reveal">
+        <div class="why-ico">🎓</div>
+        <div class="why-text">
+          <h4>Professionally Certified</h4>
+          <p>Certified data specialist with structured technical training across modern software tools.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">⚡</div>
+        <div class="why-text">
+          <h4>Fast Turnaround</h4>
+          <p>Most project tasks completed within 24 hours with optional rush delivery available.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">🎯</div>
+        <div class="why-text">
+          <h4>99% Accuracy Guaranteed</h4>
+          <p>Every dataset and code commit is thoroughly tested and triple-checked prior to delivery.</p>
+        </div>
+      </div>
+      <div class="why-item reveal">
+        <div class="why-ico">💬</div>
+        <div class="why-text">
+          <h4>Direct Communication</h4>
+          <p>Prompt responses and transparent updates throughout the project lifecycle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <h2>Ready to get started?</h2>
+  <p>Whether you need a full-stack web application or high-precision data processing, let's build something great together.</p>
+  <a href="https://www.fiverr.com/ratul_shelby/buying?source=avatar_menu_profile" class="btn-white" target="_blank" rel="noopener">Hire me on Fiverr →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Ratul Das · Web Developer & Certified Data Professional · contact@ratullab.codes</p>
+</footer>
+
+<script>
+  // Live spreadsheet typing animation
+  const rows = [
+    { n: 'Priya S.',  e: 'priya@corp.in',  a: '$3,600', s: 'Active'  },
+    { n: 'Carlos M.', e: 'cm@agency.mx',   a: '$5,100', s: 'Active'  },
+    { n: 'Yuki T.',   e: 'yuki@tech.jp',   a: '$2,800', s: 'Pending' },
+    { n: 'Fatima A.', e: 'fa@design.ae',   a: '$4,200', s: 'Active'  },
+  ];
+  let ri = 0;
+
+  function type(el, text, cls, cb) {
+    el.innerHTML = '';
+    if (cls) el.className = cls;
+    let i = 0;
+    const t = setInterval(() => {
+      el.textContent += text[i++];
+      if (i === text.length) { clearInterval(t); if (cb) cb(); }
+    }, 55);
+  }
+
+  function runRow() {
+    const r = rows[ri++ % rows.length];
+    const ln = document.getElementById('ln');
+    const le = document.getElementById('le');
+    const la = document.getElementById('la');
+    const ls = document.getElementById('ls');
+    [le, la, ls].forEach(el => { el.textContent = ''; el.className = ''; });
+    type(ln, r.n, 'c-name', () =>
+      type(le, r.e, 'c-mail', () =>
+        type(la, r.a, 'c-num', () =>
+          type(ls, r.s, 'c-stat', () =>
+            setTimeout(() => {
+              [ln, le, la, ls].forEach(el => { el.textContent = ''; el.className = ''; });
+              ln.innerHTML = '<span class="cursor"></span>';
+              setTimeout(runRow, 500);
+            }, 2200)
+          )
+        )
+      )
+    );
+  }
+  setTimeout(runRow, 1200);
+
+  // Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
