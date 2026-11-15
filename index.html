@@ -116,6 +116,17 @@ button, a {
 .orb-one { top: 20%; right: -150px; }
 .orb-two { bottom: 5%; left: -180px; }
 
+/* FLOATING GAMING & SPACE ATMOSPHERE */
+.space-decor{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.space-decor .decor{position:absolute;display:block;color:rgba(244,217,144,.48);opacity:.17;filter:drop-shadow(0 0 16px rgba(217,180,91,.18));user-select:none;animation:decorDrift 18s ease-in-out infinite}
+.decor-controller{top:17%;left:3%;font-size:2.8rem;animation-delay:-3s!important}
+.decor-monitor{top:48%;right:3%;font-size:3.2rem;animation-delay:-8s!important}
+.decor-astronaut{bottom:12%;left:5%;font-size:3rem;animation-delay:-12s!important}
+.decor-galaxy{top:8%;right:13%;font-size:2.6rem;animation-delay:-5s!important}
+.decor-solar{bottom:16%;right:12%;font-size:2.7rem;animation-delay:-10s!important}
+@keyframes decorDrift{0%,100%{transform:translate3d(0,0,0) rotate(-5deg)}50%{transform:translate3d(10px,-18px,0) rotate(5deg)}}
+.nav,.hero,.stats,.section,.skills-wrap,.split-section,.cta,footer{position:relative;z-index:1}
+
 /* NAVIGATION */
 
 .nav {
@@ -758,6 +769,12 @@ button, a {
   margin-bottom: 15px;
 }
 
+.service-list{list-style:none;display:grid;gap:8px;margin:16px 0 20px;color:#B5C4D4;font-size:.76rem;line-height:1.55}
+.service-list li{position:relative;padding-left:17px}
+.service-list li::before{content:"›";position:absolute;left:0;color:var(--gold);font-weight:800}
+.svc-card{min-height:100%;display:flex;flex-direction:column}
+.svc-card .svc-price{margin-top:auto}
+
 .svc-price {
   display: inline-block;
   color: var(--gold-light);
@@ -1116,6 +1133,13 @@ footer {
   }
 }
 
+@media(max-width:780px){
+  .space-decor .decor{opacity:.10}
+  .decor-controller{left:-12px}
+  .decor-monitor{right:-12px}
+  .decor-solar{right:2%}
+}
+
 @media(max-width:480px) {
   .nav {
     padding: 0 15px;
@@ -1237,6 +1261,13 @@ footer {
 <div class="ambient-grid"></div>
 <div class="orb orb-one"></div>
 <div class="orb orb-two"></div>
+<div class="space-decor" aria-hidden="true">
+  <span class="decor decor-controller">🎮</span>
+  <span class="decor decor-monitor">🖥️</span>
+  <span class="decor decor-astronaut">👨‍🚀</span>
+  <span class="decor decor-galaxy">🌌</span>
+  <span class="decor decor-solar">▰</span>
+</div>
 
 <!-- NAVIGATION -->
 
@@ -1484,6 +1515,32 @@ footer {
 
     </article>
 
+
+    <!-- MOVIE SEARCH SYSTEM -->
+    <article class="project-card reveal">
+      <div>
+        <span class="project-tag">API-POWERED WEB APP</span>
+        <h3 class="project-title">Movie Search System 🎬</h3>
+        <p class="project-desc">
+          A Laravel movie search application that uses the OMDb API to fetch
+          real-time movie details, ratings, and plot summaries. Search for a
+          title and explore movie information through a clean web interface.
+        </p>
+        <div class="project-tech">
+          <span class="tech-pill">Laravel</span>
+          <span class="tech-pill">PHP</span>
+          <span class="tech-pill">OMDb API</span>
+        </div>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/Ratul-007/Movie-Search-System"
+           target="_blank" rel="noopener"
+           class="btn-link btn-link-outline">
+          GITHUB REPO ↗
+        </a>
+      </div>
+    </article>
+
     <!-- CNN -->
 
     <article class="project-card reveal">
@@ -1533,62 +1590,42 @@ footer {
   <div class="services-grid">
 
     <article class="svc-card reveal">
-      <span class="svc-icon">📊</span>
-      <h3 class="svc-name">Excel & Google Sheets Entry</h3>
-      <p class="svc-desc">
-        Accurate data entry, formatting, and organizing into spreadsheets
-        of any size — neatly and consistently.
-      </p>
-      <span class="svc-price">FROM $5</span>
+      <span class="svc-icon">⌘</span>
+      <h3 class="svc-name">Web Development</h3>
+      <p class="svc-desc">Build responsive, user-focused web applications from interface to server-side functionality.</p>
+      <ul class="service-list">
+        <li>Frontend development & responsive UI</li>
+        <li>Backend development & REST API integration</li>
+        <li>Full-stack web applications</li>
+      </ul>
+      <span class="svc-price">WEB SOLUTIONS · PROJECT-BASED</span>
     </article>
 
     <article class="svc-card reveal">
-      <span class="svc-icon">📄</span>
-      <h3 class="svc-name">PDF to Excel or Word</h3>
-      <p class="svc-desc">
-        Convert scanned or digital PDFs into editable Excel or Word files.
-      </p>
-      <span class="svc-price">FROM $5</span>
+      <span class="svc-icon">🎮</span>
+      <h3 class="svc-name">Game & Simulation Development</h3>
+      <p class="svc-desc">Create interactive digital experiences with engaging mechanics, immersive environments, and simulation-focused gameplay.</p>
+      <ul class="service-list">
+        <li>Game logic & gameplay systems</li>
+        <li>3D simulations & interactive environments</li>
+        <li>Survival mechanics & resource systems</li>
+      </ul>
+      <span class="svc-price">INTERACTIVE EXPERIENCES · PROJECT-BASED</span>
     </article>
 
     <article class="svc-card reveal">
-      <span class="svc-icon">🌐</span>
-      <h3 class="svc-name">Web Research & Data Collection</h3>
-      <p class="svc-desc">
-        Collect, organize, and deliver targeted data from websites
-        into clean, structured spreadsheets.
-      </p>
-      <span class="svc-price">FROM $10</span>
-    </article>
-
-    <article class="svc-card reveal">
-      <span class="svc-icon">🗂️</span>
-      <h3 class="svc-name">CRM Data Entry</h3>
-      <p class="svc-desc">
-        Enter, update, and clean records in Salesforce, HubSpot,
-        Zoho, and other CRM systems.
-      </p>
-      <span class="svc-price">FROM $15</span>
-    </article>
-
-    <article class="svc-card reveal">
-      <span class="svc-icon">✍️</span>
-      <h3 class="svc-name">Copy Typing</h3>
-      <p class="svc-desc">
-        Type handwritten, scanned, or image-based documents into
-        clean, formatted digital files.
-      </p>
-      <span class="svc-price">FROM $5</span>
-    </article>
-
-    <article class="svc-card reveal">
-      <span class="svc-icon">🧹</span>
-      <h3 class="svc-name">Data Cleaning</h3>
-      <p class="svc-desc">
-        Remove duplicates, fix inconsistencies, and standardize
-        data across datasets.
-      </p>
-      <span class="svc-price">FROM $10</span>
+      <span class="svc-icon">▤</span>
+      <h3 class="svc-name">Data Solutions</h3>
+      <p class="svc-desc">Accurate, organized data processing and document support for businesses, teams, and individuals.</p>
+      <ul class="service-list">
+        <li>Excel & Google Sheets entry — from $5</li>
+        <li>PDF to Excel or Word — from $5</li>
+        <li>Web research & data collection — from $10</li>
+        <li>CRM data entry — from $15</li>
+        <li>Copy typing — from $5</li>
+        <li>Data cleaning — from $10</li>
+      </ul>
+      <span class="svc-price">DATA SUPPORT · FROM $5</span>
     </article>
 
   </div>
@@ -1610,21 +1647,25 @@ footer {
 
     <div class="skills-grid">
 
-      <div class="skill-pill"><span class="sk-icon">⚛️</span>React</div>
+      <div class="skill-pill"><span class="sk-icon">⚛️</span>React 19</div>
+      <div class="skill-pill"><span class="sk-icon">🧭</span>React Router</div>
       <div class="skill-pill"><span class="sk-icon">⚡</span>JavaScript</div>
       <div class="skill-pill"><span class="sk-icon">🌐</span>HTML5 & CSS3</div>
       <div class="skill-pill"><span class="sk-icon">🎮</span>Three.js</div>
       <div class="skill-pill"><span class="sk-icon">🧊</span>React Three Fiber</div>
+      <div class="skill-pill"><span class="sk-icon">🛰️</span>3D GLB Models</div>
       <div class="skill-pill"><span class="sk-icon">🚀</span>Vite</div>
       <div class="skill-pill"><span class="sk-icon">🟢</span>Node.js</div>
+      <div class="skill-pill"><span class="sk-icon">🔌</span>REST APIs</div>
       <div class="skill-pill"><span class="sk-icon">🐘</span>PHP 8</div>
       <div class="skill-pill"><span class="sk-icon">🗄️</span>MySQL</div>
       <div class="skill-pill"><span class="sk-icon">🐍</span>Python</div>
       <div class="skill-pill"><span class="sk-icon">📊</span>Microsoft Excel</div>
       <div class="skill-pill"><span class="sk-icon">📋</span>Google Sheets</div>
       <div class="skill-pill"><span class="sk-icon">📦</span>Git & GitHub</div>
-      <div class="skill-pill"><span class="sk-icon">🛰️</span>NASA APIs</div>
-      <div class="skill-pill"><span class="sk-icon">🤖</span>AI Integration</div>
+      <div class="skill-pill"><span class="sk-icon">🪐</span>NASA APIs</div>
+      <div class="skill-pill"><span class="sk-icon">🤖</span>Ollama + Qwen AI</div>
+      <div class="skill-pill"><span class="sk-icon">🔊</span>Web Audio API</div>
       <div class="skill-pill"><span class="sk-icon">🔍</span>Web Research</div>
 
     </div>
