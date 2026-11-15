@@ -1359,6 +1359,80 @@ body::before{
 @keyframes titanBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.025) translateY(-5px)}}
 @media(max-width:780px){.anime-titan{width:100px;height:165px;right:4%;opacity:.16}}
 
+
+/* FLOATING MISSION OBJECTS */
+.floating-gear{
+  position:fixed;z-index:1;pointer-events:none;display:flex;align-items:center;gap:9px;
+  padding:9px 12px;border:1px solid rgba(145,190,255,.2);border-radius:12px;
+  background:rgba(5,15,32,.42);color:#dceaff;
+  box-shadow:0 8px 28px rgba(0,0,0,.16);
+  font-family:'Orbitron',sans-serif;font-size:10px;letter-spacing:.08em;
+  animation:gearFloat 10s ease-in-out infinite;
+}
+.floating-gear span{font-size:27px;line-height:1;filter:drop-shadow(0 0 8px rgba(119,180,255,.25))}
+.floating-gear small{font-size:8px;white-space:nowrap;color:#b8cce6}
+.gear-astronaut{left:2.5%;top:30%;animation-delay:-2s}
+.gear-habitat{right:2.5%;top:62%;animation-delay:-5s}
+.gear-desktop{left:3%;bottom:17%;animation-delay:-7s}
+.gear-controller{right:4%;bottom:9%;animation-delay:-3s}
+@keyframes gearFloat{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-9px,0)}}
+
+/* PERFORMANCE + RESPONSIVE POLISH */
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body::after{display:none}
+.orb{display:none}
+.cosmic-galaxy{filter:none;opacity:.48}
+.space-stars,.space-stars::before,.space-stars::after{animation-duration:7s}
+.space-satellite{filter:none;animation-duration:30s}
+.anime-figure{filter:none;animation-duration:12s}
+.project-card,.svc-card,.skill-pill,.cert-card,.command-panel{
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+}
+.project-card,.svc-card,.skill-pill{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.reveal{transition:opacity .45s ease,transform .45s ease}
+@media(max-width:780px){
+  .nav{height:auto;min-height:66px;flex-wrap:wrap;gap:8px;padding:12px 18px}
+  .nav-links{display:flex;order:3;flex-basis:100%;justify-content:center;gap:clamp(14px,4vw,25px);padding-top:5px}
+  .nav-links a{font-size:.72rem}
+  .hero{gap:30px}
+  .floating-gear{padding:7px 9px;gap:6px;background:rgba(5,15,32,.28);border-color:rgba(145,190,255,.13)}
+  .floating-gear span{font-size:21px}
+  .floating-gear small{font-size:7px}
+  .gear-astronaut{left:1%;top:24%}
+  .gear-habitat{right:1%;top:68%}
+  .gear-desktop{left:1%;bottom:12%}
+  .gear-controller{right:1%;bottom:5%}
+  .anime-figure{opacity:.3}
+  .space-satellite{display:none}
+  .project-card,.svc-card,.skill-pill,.cert-card,.command-panel,.nav,.stats{
+    -webkit-backdrop-filter:none;backdrop-filter:none;
+  }
+}
+@media(max-width:480px){
+  .nav{padding:10px 14px}
+  .nav-links{gap:15px}
+  .nav-links a{font-size:.67rem}
+  .nav-cta{font-size:.63rem;padding:8px 10px}
+  .hero-title{font-size:clamp(2rem,9vw,2.35rem);overflow-wrap:anywhere}
+  .system-label{font-size:.53rem;padding:7px 10px}
+  .panel-brand{font-size:.58rem}
+  .panel-status{font-size:.52rem}
+  .panel-bottom{font-size:.48rem;padding:10px 12px}
+  .telemetry-grid{gap:6px}
+  .telemetry-label{font-size:.5rem}
+  .floating-gear{padding:6px;background:rgba(5,15,32,.2)}
+  .floating-gear small{display:none}
+  .gear-astronaut{top:19%;left:2%}
+  .gear-habitat{top:72%;right:2%}
+  .gear-desktop{bottom:8%;left:2%}
+  .gear-controller{bottom:3%;right:2%}
+  .anime-figure{display:none}
+  .anime-titan{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .floating-gear{animation:none!important}
+}
+
 </style>
 </head>
 
@@ -1378,6 +1452,10 @@ body::before{
     <div class="orbit orbit-four"><i></i></div>
   </div>
   <div class="space-satellite">🛰</div>
+  <div class="floating-gear gear-astronaut"><span>👨‍🚀</span><small>ASTRONAUT</small></div>
+  <div class="floating-gear gear-habitat"><span>🏠</span><small>MOON HABITAT</small></div>
+  <div class="floating-gear gear-desktop"><span>🖥️</span><small>MISSION DESKTOP</small></div>
+  <div class="floating-gear gear-controller"><span>🎮</span><small>GAME CONTROL</small></div>
   <div class="anime-figure anime-left" aria-hidden="true">
     <svg viewBox="0 0 110 190" xmlns="http://www.w3.org/2000/svg">
       <path fill="#f2b18b" d="M35 36 23 15 43 24 53 4 65 24 87 14 76 39 83 52 72 67 38 65 25 53Z"/>
