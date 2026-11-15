@@ -1253,6 +1253,107 @@ footer {
     transform: none;
   }
 }
+
+/* CINEMATIC SPACE UNIVERSE */
+body{background:#030611}
+body::before{
+  background:
+    radial-gradient(ellipse at 72% 18%,rgba(107,55,190,.23),transparent 36%),
+    radial-gradient(ellipse at 18% 62%,rgba(18,104,190,.2),transparent 40%),
+    radial-gradient(ellipse at 82% 78%,rgba(160,67,42,.14),transparent 32%),
+    linear-gradient(180deg,#030611 0%,#071329 48%,#030611 100%);
+}
+.space-decor{z-index:0;overflow:hidden}
+.space-decor .decor{display:none}
+.space-stars,.space-stars::before,.space-stars::after{
+  position:fixed;inset:0;content:"";pointer-events:none;
+  background-image:
+   radial-gradient(2px 2px at 8% 17%,#fff 45%,transparent 60%),
+   radial-gradient(1px 1px at 18% 71%,#b9dcff 45%,transparent 60%),
+   radial-gradient(2px 2px at 32% 28%,#fff 45%,transparent 60%),
+   radial-gradient(1px 1px at 47% 83%,#fff 45%,transparent 60%),
+   radial-gradient(2px 2px at 61% 13%,#d8caff 45%,transparent 60%),
+   radial-gradient(1px 1px at 74% 57%,#fff 45%,transparent 60%),
+   radial-gradient(2px 2px at 88% 34%,#fff 45%,transparent 60%),
+   radial-gradient(1px 1px at 95% 86%,#b8dcff 45%,transparent 60%);
+  background-size:370px 290px;animation:starTwinkle 4.5s ease-in-out infinite alternate;
+}
+.space-stars{z-index:0;opacity:.8}
+.space-stars::before{opacity:.55;transform:translate(40px,25px);animation-delay:-2s;background-size:510px 410px}
+.space-stars::after{opacity:.35;transform:translate(-30px,60px);animation-delay:-3.2s;background-size:270px 350px}
+@keyframes starTwinkle{0%{opacity:.22}50%{opacity:.95}100%{opacity:.38}}
+.cosmic-galaxy{
+ position:fixed;z-index:0;pointer-events:none;width:390px;height:270px;right:4%;top:13%;
+ opacity:.68;border-radius:50%;
+ background:radial-gradient(ellipse,rgba(255,218,139,.95) 0 1%,rgba(180,111,255,.42) 5%,rgba(90,67,190,.2) 24%,transparent 69%);
+ filter:drop-shadow(0 0 35px rgba(159,103,255,.35));
+ transform:rotate(-24deg);
+}
+.cosmic-galaxy::before{
+ content:"";position:absolute;inset:22% 0;border-radius:50%;
+ border:2px solid rgba(194,157,255,.3);transform:rotate(-18deg) scaleY(.35);
+ box-shadow:0 0 20px rgba(180,120,255,.3),inset 0 0 18px rgba(180,120,255,.22)
+}
+.solar-system{
+ position:fixed;z-index:0;pointer-events:none;right:7%;top:18%;
+ width:280px;height:280px;border-radius:50%;opacity:.9;
+}
+.sun-core{
+ position:absolute;left:50%;top:50%;width:35px;height:35px;border-radius:50%;
+ transform:translate(-50%,-50%);
+ background:radial-gradient(circle at 35% 30%,#fffbd0,#ffd34f 42%,#ff7b24 75%);
+ box-shadow:0 0 18px 7px rgba(255,173,48,.55),0 0 55px 18px rgba(255,117,35,.2);
+ animation:sunPulse 3s ease-in-out infinite alternate;
+}
+@keyframes sunPulse{to{box-shadow:0 0 26px 11px rgba(255,190,55,.72),0 0 72px 25px rgba(255,117,35,.28)}}
+.orbit{
+ position:absolute;left:50%;top:50%;border:1px solid rgba(176,190,255,.26);
+ border-radius:50%;transform:translate(-50%,-50%);animation:orbitSpin linear infinite;
+}
+.orbit i{position:absolute;left:50%;top:-5px;width:10px;height:10px;border-radius:50%;transform:translateX(-50%);display:block}
+.orbit-one{width:78px;height:78px;animation-duration:8s}.orbit-one i{background:#c2b8a0;width:7px;height:7px}
+.orbit-two{width:124px;height:124px;animation-duration:13s}.orbit-two i{background:#d8a66d;width:10px;height:10px}
+.orbit-three{width:174px;height:174px;animation-duration:19s}.orbit-three i{background:#3c9bff;width:12px;height:12px;box-shadow:0 0 10px #348dff}
+.orbit-four{width:228px;height:228px;animation-duration:27s}.orbit-four i{background:#cf7754;width:9px;height:9px}
+@keyframes orbitSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.space-satellite{
+ position:fixed;z-index:0;right:29%;top:43%;font-size:28px;opacity:.75;
+ filter:drop-shadow(0 0 10px #7bcaff);pointer-events:none;
+ animation:satelliteDrift 22s ease-in-out infinite;
+}
+@keyframes satelliteDrift{0%,100%{transform:translate(0,0) rotate(-18deg)}50%{transform:translate(45px,-28px) rotate(12deg)}}
+.nav,.hero,.stats,.section,.skills-wrap,.split-section,.cta,footer{z-index:2}
+.nav{background:rgba(4,10,24,.76);backdrop-filter:blur(12px)}
+.stats{background:rgba(8,20,42,.58);backdrop-filter:blur(7px)}
+.project-card,.svc-card,.skill-pill,.cert-card,.command-panel{
+ background:rgba(7,18,38,.58)!important;
+ backdrop-filter:blur(6px);
+ -webkit-backdrop-filter:blur(6px);
+ border-color:rgba(159,185,255,.24);
+ box-shadow:0 14px 45px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.045);
+}
+.project-card:first-child{background:rgba(7,18,38,.57)!important}
+.project-card:hover,.svc-card:hover{border-color:rgba(132,190,255,.65);box-shadow:0 18px 50px rgba(25,90,180,.16)}
+.skill-pill{background:rgba(8,20,42,.5)!important}
+.command-panel{background:rgba(5,15,32,.72)!important}
+.planet-display{background:rgba(13,36,67,.28)}
+/* decorative anime-inspired silhouettes */
+.anime-figure{position:fixed;z-index:1;pointer-events:none;bottom:5%;width:110px;height:190px;opacity:.76;filter:drop-shadow(0 0 18px rgba(97,165,255,.35));animation:figureFloat 8s ease-in-out infinite}
+.anime-figure svg{width:100%;height:100%;overflow:visible}
+.anime-left{left:1.2%;animation-delay:-3s}
+.anime-right{right:1.2%;bottom:12%;animation-delay:-6s;transform:scaleX(-1)}
+@keyframes figureFloat{0%,100%{translate:0 0}50%{translate:0 -16px}}
+@media(max-width:780px){
+ .solar-system{width:180px;height:180px;right:-35px;top:15%;opacity:.52;transform:scale(.72);transform-origin:top right}
+ .cosmic-galaxy{width:230px;height:160px;right:-35px;top:17%;opacity:.4}
+ .anime-figure{width:62px;height:112px;opacity:.42}
+ .anime-left{left:-12px}.anime-right{right:-12px}
+ .space-satellite{right:18%;top:50%;opacity:.4}
+}
+@media(prefers-reduced-motion:reduce){
+ .space-stars,.space-stars::before,.space-stars::after,.orbit,.sun-core,.space-satellite,.anime-figure{animation:none!important}
+}
+
 </style>
 </head>
 
@@ -1262,11 +1363,46 @@ footer {
 <div class="orb orb-one"></div>
 <div class="orb orb-two"></div>
 <div class="space-decor" aria-hidden="true">
-  <span class="decor decor-controller">🎮</span>
-  <span class="decor decor-monitor">🖥️</span>
-  <span class="decor decor-astronaut">👨‍🚀</span>
-  <span class="decor decor-galaxy">🌌</span>
-  <span class="decor decor-solar">▰</span>
+  <div class="space-stars"></div>
+  <div class="cosmic-galaxy"></div>
+  <div class="solar-system">
+    <div class="sun-core"></div>
+    <div class="orbit orbit-one"><i></i></div>
+    <div class="orbit orbit-two"><i></i></div>
+    <div class="orbit orbit-three"><i></i></div>
+    <div class="orbit orbit-four"><i></i></div>
+  </div>
+  <div class="space-satellite">🛰</div>
+  <div class="anime-figure anime-left" aria-hidden="true">
+    <svg viewBox="0 0 110 190" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#f2b18b" d="M35 36 23 15 43 24 53 4 65 24 87 14 76 39 83 52 72 67 38 65 25 53Z"/>
+      <path fill="#f4a62a" d="M24 40 8 25 31 29 39 10 49 27 61 7 66 30 91 22 77 45 87 55 72 70 31 67 18 54Z"/>
+      <ellipse cx="54" cy="53" rx="24" ry="27" fill="#f0bd9c"/>
+      <path fill="#1b2438" d="M31 49q8-17 22-14 17-5 25 13l-8-5-8 5-10-5-11 5-8-3Z"/>
+      <path stroke="#4b2931" stroke-width="2" d="M40 55h9m12 0h9M49 55l5 3 6-3"/>
+      <path fill="#244b83" d="M30 79 17 103 23 153 83 153 91 102 76 79 65 73 43 73Z"/>
+      <path fill="#e5eaf5" d="M43 75 54 91 66 75 61 70 48 70Z"/>
+      <path fill="#e8a52b" d="m28 95-13 19 12 8 13-18m35-9 16 18-11 9-14-18"/>
+      <path fill="#17243c" d="m31 148-8 34h17l13-31 8 31h18l-8-34Z"/>
+      <path fill="#f6d24c" d="M29 104h50v5H29z"/>
+      <path fill="none" stroke="#fff" stroke-width="2" opacity=".8" d="M19 35l-8-8m79 5 8-9"/>
+    </svg>
+  </div>
+  <div class="anime-figure anime-right" aria-hidden="true">
+    <svg viewBox="0 0 110 190" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#e9b58f" d="M28 42 17 9 35 27 46 0 54 25 73 5 70 35 89 18 79 53 69 68 35 68Z"/>
+      <path fill="#f4d34f" d="M27 42 17 9 35 27 46 0 54 25 73 5 70 35 89 18 79 53 69 68 35 68Z"/>
+      <ellipse cx="54" cy="54" rx="23" ry="26" fill="#e8b28e"/>
+      <path fill="#24253c" d="M32 48q5-22 22-21 17 0 23 22l-10-8-9 6-9-5-9 7Z"/>
+      <path stroke="#3b2730" stroke-width="2" d="M40 56h9m12 0h9M50 65q5 4 10 0"/>
+      <path fill="#db4c39" d="M29 82 16 108l9 46h61l8-47-17-25-12-8H42Z"/>
+      <path fill="#f4d34f" d="M43 76 54 93 66 76 61 70H47Z"/>
+      <path fill="#e8b28e" d="m24 103-13 19 12 8 14-19m49-8 15 17-10 10-16-17"/>
+      <path fill="#25243b" d="m31 149-7 33h18l12-31 8 31h18l-8-33Z"/>
+      <path fill="#fff" opacity=".85" d="m35 91 19 12 19-12-7 23H43Z"/>
+      <path fill="none" stroke="#ffdf72" stroke-width="2" d="M20 40 8 29m72 6 13-11"/>
+    </svg>
+  </div>
 </div>
 
 <!-- NAVIGATION -->
