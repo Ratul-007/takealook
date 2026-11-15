@@ -1354,6 +1354,11 @@ body::before{
  .space-stars,.space-stars::before,.space-stars::after,.orbit,.sun-core,.space-satellite,.anime-figure{animation:none!important}
 }
 
+
+.anime-titan{right:7%;bottom:-4%;width:180px;height:290px;opacity:.25;filter:drop-shadow(0 0 24px rgba(255,90,70,.32));animation:titanBreath 7s ease-in-out infinite}
+@keyframes titanBreath{0%,100%{transform:scale(1)}50%{transform:scale(1.025) translateY(-5px)}}
+@media(max-width:780px){.anime-titan{width:100px;height:165px;right:4%;opacity:.16}}
+
 </style>
 </head>
 
@@ -1386,6 +1391,20 @@ body::before{
       <path fill="#17243c" d="m31 148-8 34h17l13-31 8 31h18l-8-34Z"/>
       <path fill="#f6d24c" d="M29 104h50v5H29z"/>
       <path fill="none" stroke="#fff" stroke-width="2" opacity=".8" d="M19 35l-8-8m79 5 8-9"/>
+    </svg>
+  </div>
+  <div class="anime-figure anime-titan" aria-hidden="true">
+    <svg viewBox="0 0 180 290" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#9c5149" d="M49 58 36 28 62 39 76 9 91 35 117 15 115 45 145 35 128 69 140 91 121 111 54 111 34 88Z"/>
+      <path fill="#d18a69" d="M48 69Q52 42 90 42T132 71L126 123Q116 151 91 154 62 148 51 121Z"/>
+      <path fill="#542f35" d="M49 73 66 65 81 74 92 66 108 75 128 67 125 91 108 85 92 93 75 84 55 92Z"/>
+      <path fill="#f4d2ad" d="M66 93h16l-3 7H66zm34 0h16l-3 7h-13z"/>
+      <path fill="none" stroke="#6f3037" stroke-width="4" d="M90 91v24m-17 14q18 12 36 0"/>
+      <path fill="#a95e52" d="M39 151 9 188l20 32 25-27 7 88h63l7-88 25 27 15-35-34-34-25-10H64Z"/>
+      <path fill="#d68c6c" d="m59 153 31 26 31-26-12-15H72Z"/>
+      <path fill="#7b3d3d" d="m55 189 35 15 35-15-8 26H63Z"/>
+      <path fill="#8c4b45" d="m58 217-4 48h19l17-42 17 42h19l-5-48Z"/>
+      <path fill="none" stroke="#f2b18d" stroke-width="3" opacity=".75" d="m36 179 18 16m72-16-18 16M68 218l22 12 22-12"/>
     </svg>
   </div>
   <div class="anime-figure anime-right" aria-hidden="true">
