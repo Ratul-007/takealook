@@ -1433,6 +1433,54 @@ body::after{display:none}
   .floating-gear{animation:none!important}
 }
 
+
+/* CLEAN, LARGE CENTERED SPACE OBJECTS */
+.floating-gear{display:none!important}
+.floating-object{
+ position:fixed;z-index:1;pointer-events:none;width:clamp(92px,10vw,150px);
+ opacity:.82;filter:drop-shadow(0 8px 20px rgba(42,153,255,.22));
+ animation:objectDrift 13s ease-in-out infinite;
+}
+.floating-object svg{display:block;width:100%;height:auto;overflow:visible}
+.object-astronaut{left:17%;top:25%;width:clamp(100px,11vw,164px);animation-delay:-4s}
+.object-desktop{right:18%;top:51%;width:clamp(110px,12vw,174px);animation-delay:-8s}
+.object-controller{left:66%;bottom:10%;width:clamp(105px,11vw,160px);animation-delay:-1s}
+@keyframes objectDrift{0%,100%{transform:translate3d(0,0,0) rotate(-2deg)}50%{transform:translate3d(0,-12px,0) rotate(2deg)}}
+
+/* LIGHTWEIGHT LIVE FPS METER */
+#fps-indicator{
+ position:fixed;right:12px;bottom:12px;z-index:20;pointer-events:none;
+ padding:6px 9px;border:1px solid rgba(130,190,255,.24);border-radius:7px;
+ background:rgba(3,10,24,.72);color:#a9e5ff;
+ font:600 10px/1.2 ui-monospace,SFMono-Regular,monospace;
+ letter-spacing:.06em;box-shadow:0 3px 12px rgba(0,0,0,.18);
+}
+
+/* REDUCE PAINT COST DURING SCROLL */
+.project-card,.svc-card,.skill-pill,.cert-card,.command-panel,.nav,.stats{
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+.project-card,.svc-card,.skill-pill,.cert-card,.command-panel{
+ box-shadow:0 8px 24px rgba(0,0,0,.16),inset 0 1px rgba(255,255,255,.035);
+}
+.space-stars,.space-stars::before,.space-stars::after{animation:none!important}
+.cosmic-galaxy{filter:none!important}
+.space-satellite,.anime-figure{animation:none!important}
+.reveal{transition:opacity .28s ease,transform .28s ease!important}
+@media(max-width:780px){
+ .object-astronaut{left:9%;top:23%;width:clamp(86px,18vw,126px)}
+ .object-desktop{right:8%;top:57%;width:clamp(94px,19vw,135px)}
+ .object-controller{left:59%;bottom:8%;width:clamp(92px,18vw,128px)}
+ .floating-object{opacity:.68;filter:none}
+}
+@media(max-width:480px){
+ .object-astronaut{left:5%;top:22%;width:78px}
+ .object-desktop{right:4%;top:61%;width:84px}
+ .object-controller{left:57%;bottom:7%;width:80px}
+ #fps-indicator{right:7px;bottom:7px;font-size:9px;padding:5px 7px}
+}
+@media(prefers-reduced-motion:reduce){.floating-object{animation:none!important}}
+
 </style>
 </head>
 
@@ -1452,10 +1500,42 @@ body::after{display:none}
     <div class="orbit orbit-four"><i></i></div>
   </div>
   <div class="space-satellite">🛰</div>
-  <div class="floating-gear gear-astronaut"><span>👨‍🚀</span><small>ASTRONAUT</small></div>
-  <div class="floating-gear gear-habitat"><span>🏠</span><small>MOON HABITAT</small></div>
-  <div class="floating-gear gear-desktop"><span>🖥️</span><small>MISSION DESKTOP</small></div>
-  <div class="floating-gear gear-controller"><span>🎮</span><small>GAME CONTROL</small></div>
+  <div class="floating-object object-astronaut" aria-hidden="true">
+    <svg viewBox="0 0 120 190" role="img" aria-label="Astronaut illustration">
+      <defs><linearGradient id="suit" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbff"/><stop offset="1" stop-color="#8ea9c9"/></linearGradient><linearGradient id="visor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#8de4ff"/><stop offset=".55" stop-color="#245b91"/><stop offset="1" stop-color="#101d3b"/></linearGradient></defs>
+      <ellipse cx="60" cy="181" rx="31" ry="5" fill="#68bfff" opacity=".18"/>
+      <path d="M39 91 26 104 18 143 31 148 44 119 43 159 77 159 76 119 89 148 102 143 94 104 81 91Z" fill="url(#suit)" stroke="#dcecff" stroke-width="2"/>
+      <path d="M43 151 38 179 53 181 60 158 67 181 82 179 77 151Z" fill="#b9cce1" stroke="#eaf4ff" stroke-width="2"/>
+      <path d="M39 91 26 105 16 137 30 142 44 116M81 91 94 105 104 137 90 142 76 116" fill="url(#suit)" stroke="#dcecff" stroke-width="2"/>
+      <rect x="43" y="78" width="34" height="22" rx="8" fill="#dce8f5" stroke="#fff" stroke-width="2"/>
+      <path d="M60 10c-23 0-35 16-35 39v17c0 21 15 34 35 34s35-13 35-34V49C95 26 83 10 60 10Z" fill="url(#suit)" stroke="#f4f8ff" stroke-width="3"/>
+      <path d="M60 22c-17 0-26 12-26 29v12c0 16 10 25 26 25s26-9 26-25V51c0-17-9-29-26-29Z" fill="url(#visor)" stroke="#d7f3ff" stroke-width="3"/>
+      <path d="M42 43q18-15 36-5" fill="none" stroke="#d5f8ff" stroke-width="4" opacity=".65"/>
+      <path d="M47 109h26l7 30H40Z" fill="#243d5d" stroke="#cde3fa" stroke-width="2"/>
+      <rect x="49" y="116" width="22" height="13" rx="3" fill="#54c9ef"/><circle cx="55" cy="122" r="2" fill="#fff"/><circle cx="64" cy="122" r="2" fill="#fff"/>
+      <path d="M27 111 18 119m75-8 9 8" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <div class="floating-object object-desktop" aria-hidden="true">
+    <svg viewBox="0 0 150 125" role="img" aria-label="Desktop computer illustration">
+      <rect x="10" y="8" width="130" height="82" rx="9" fill="#172b49" stroke="#b8d9ff" stroke-width="3"/>
+      <rect x="17" y="15" width="116" height="68" rx="4" fill="#07162d"/>
+      <path d="M24 68 49 43l17 15 25-29 35 39" fill="none" stroke="#53c9ff" stroke-width="3"/>
+      <circle cx="111" cy="28" r="6" fill="#ffd77b"/>
+      <path d="M75 90v17m-22 5h44" stroke="#c4dcf6" stroke-width="6" stroke-linecap="round"/>
+      <rect x="43" y="118" width="64" height="4" rx="2" fill="#6e91b9"/>
+    </svg>
+  </div>
+  <div class="floating-object object-controller" aria-hidden="true">
+    <svg viewBox="0 0 150 100" role="img" aria-label="Game controller illustration">
+      <path d="M37 19h76c13 0 22 9 26 22l8 31c3 13-10 22-21 14l-22-18H46L24 86C13 94 0 85 3 72l8-31c4-13 13-22 26-22Z" fill="#233b60" stroke="#d5eaff" stroke-width="3"/>
+      <path d="M32 40v28m-14-14h28" stroke="#dff3ff" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="108" cy="43" r="6" fill="#65d6ff"/><circle cx="124" cy="58" r="6" fill="#ffc96b"/>
+      <circle cx="91" cy="59" r="4" fill="#b6cfff"/><circle cx="109" cy="72" r="4" fill="#b6cfff"/>
+      <path d="M57 83q18 10 36 0" fill="none" stroke="#6f9acb" stroke-width="3"/>
+    </svg>
+  </div>
+  <div id="fps-indicator" aria-live="off" title="Live frames per second">FPS --</div>
   <div class="anime-figure anime-left" aria-hidden="true">
     <svg viewBox="0 0 110 190" xmlns="http://www.w3.org/2000/svg">
       <path fill="#f2b18b" d="M35 36 23 15 43 24 53 4 65 24 87 14 76 39 83 52 72 67 38 65 25 53Z"/>
@@ -2065,6 +2145,34 @@ if ('IntersectionObserver' in window) {
   });
 
 }
+</script>
+
+
+<!-- LIGHTWEIGHT FPS METER -->
+<script>
+(() => {
+  const meter = document.getElementById('fps-indicator');
+  if (!meter || !('requestAnimationFrame' in window)) return;
+  let frames = 0;
+  let last = 0;
+  let rafId = 0;
+  const tick = (now) => {
+    if (document.hidden) { rafId = 0; return; }
+    frames++;
+    if (!last) last = now;
+    if (now - last >= 1000) {
+      const fps = Math.round(frames * 1000 / (now - last));
+      meter.textContent = 'FPS ' + Math.min(fps, 120);
+      frames = 0;
+      last = now;
+    }
+    rafId = requestAnimationFrame(tick);
+  };
+  const start = () => { if (!rafId) { last = 0; frames = 0; rafId = requestAnimationFrame(tick); } };
+  const stop = () => { if (rafId) cancelAnimationFrame(rafId); rafId = 0; };
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start(), {passive:true});
+  start();
+})();
 </script>
 
 </body>
